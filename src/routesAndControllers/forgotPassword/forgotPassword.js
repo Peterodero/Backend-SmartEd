@@ -42,7 +42,7 @@ const transporter = nodemailer.createTransport({
   
   // Route: Reset Password
   resetPasswordRouter.post('/reset-password/:token', async (req, res) => {
-    const { token } = req.params;
+    const { token } = req.params;  
     const { password } = req.body;
   
     try {

@@ -12,7 +12,7 @@ const recommendationRouter = require('./routesAndControllers/recommendations/cou
 const studentNumberRouter = require('./routesAndControllers/countStudents/studentNumber.route');
 const lecturerProfileRouter = require('./routesAndControllers/profile/lecRoute');
 const allStudentResultsRouter = require('./routesAndControllers/viewResults/lecViewResultsRoute');
-const { forgotPasswordRouter } = require('./routesAndControllers/forgotPassword/forgotPassword');
+const { forgotPasswordRouter, resetPasswordRouter } = require('./routesAndControllers/forgotPassword/forgotPassword');
 
 
 const app = express();
@@ -34,6 +34,7 @@ app.use(studentNumberRouter);
 app.use(lecturerProfileRouter);
 app.use(allStudentResultsRouter);
 app.use(forgotPasswordRouter);
+app.use(resetPasswordRouter);
 
 module.exports = app;
 
