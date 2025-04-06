@@ -16,11 +16,30 @@ const { forgotPasswordRouter, resetPasswordRouter } = require('./routesAndContro
 
 
 const app = express();
+// const allowedOrigins = ["https://password-reset-smart-ed.vercel.app"];
+
  
 app.use(express.json());  
-app.use(cors({
-	origin: 'http://localhost:5173'  
-}));
+// app.use(cors({
+// 	origin: 'http://localhost:5173'  
+// }));
+const allowedOrigins = [
+	"http://localhost:5173", // for development
+	"https://password-reset-smart-ed.vercel.app" // deployed frontend
+  ];
+  
+  // 🔐 Setup CORS
+  app.use(cors({
+	origin: function (origin, callback) {
+	  // Allow requests with no origin (like mobile apps or curl)
+	  if (!origin || allowedOrigins.includes(origin)) {
+		callback(null, true);
+	  } else {
+		callback(new Error("Not allowed by CORS"));
+	  }
+	},
+	credentials: true
+  }));
 
 app.use('/auth', authRoutes);
 app.use(studentRoute);
