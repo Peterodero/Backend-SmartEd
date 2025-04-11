@@ -16,28 +16,30 @@ const { forgotPasswordRouter, resetPasswordRouter } = require('./routesAndContro
 
 
 const app = express();
+
+app.use(cors())
  
-const allowedOrigins = [
-  'https://password-reset-smart-ed.vercel.app', // Vercel frontend // Localhost development environment
-  'http://192.168.181.82:5173', // Another local machine's IP (replace with your machine's IP)
-];
+// const allowedOrigins = [
+//   'https://password-reset-smart-ed.vercel.app', // Vercel frontend // Localhost development environment
+//   'http://192.168.181.82:5173', // Another local machine's IP (replace with your machine's IP)
+// ];
 
 // Setup CORS options
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Check if the incoming request's origin is in the allowedOrigins array
-    if (allowedOrigins.includes(origin) || !origin) {
-      // Allow the request if it matches one of the origins, or if there is no origin (like Postman)
-      callback(null, true);
-    } else {
-      // Reject the request if the origin is not in the allowedOrigins
-      callback(new Error('CORS not allowed'), false);
-    }
-  },
-  methods: 'GET,POST,PUT,DELETE', // Allowed HTTP methods
-  credentials: true, // Allows cookies and other credentials to be sent
-  allowedHeaders: 'Content-Type,Authorization', // Allowed headers
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     // Check if the incoming request's origin is in the allowedOrigins array
+//     if (allowedOrigins.includes(origin) || !origin) {
+//       // Allow the request if it matches one of the origins, or if there is no origin (like Postman)
+//       callback(null, true);
+//     } else {
+//       // Reject the request if the origin is not in the allowedOrigins
+//       callback(new Error('CORS not allowed'), false);
+//     }
+//   },
+//   methods: 'GET,POST,PUT,DELETE', // Allowed HTTP methods
+//   credentials: true, // Allows cookies and other credentials to be sent
+//   allowedHeaders: 'Content-Type,Authorization', // Allowed headers
+// };
 
 // const corsOptions = {
 //   origin: 'https://password-reset-smart-ed.vercel.app',  
