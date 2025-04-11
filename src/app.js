@@ -49,7 +49,6 @@ app.use(cors())
 // };
 
 // Use CORS middleware
-app.use(cors(corsOptions));
 
 app.use('/auth', authRoutes);
 app.use(studentRoute);
